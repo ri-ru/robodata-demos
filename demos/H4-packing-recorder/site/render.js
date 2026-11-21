@@ -1,9 +1,9 @@
 import * as THREE from './vendor/three.module.js';
 export function createView(physics,container){const{model,data}=physics;
- let dirty=true;const scene=new THREE.Scene();scene.background=new THREE.Color('#e8ede6');
+ let dirty=true;const scene=new THREE.Scene();scene.background=new THREE.Color('#ebebeb');
  const camera=new THREE.PerspectiveCamera(38,1,.01,20);camera.up.set(0,0,1);let azimuth=-.9,elevation=.67,distance=2.0;const look=new THREE.Vector3(.3,0,.22);
  const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'low-power'});const gl=renderer.getContext(),debug=gl.getExtension('WEBGL_debug_renderer_info'),driver=debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):'';renderer.setPixelRatio(/SwiftShader|llvmpipe|software/i.test(driver)?.7:Math.min(devicePixelRatio,1.3));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;container.append(renderer.domElement);
- scene.add(new THREE.HemisphereLight(0xffffff,0x839487,2.4));const sun=new THREE.DirectionalLight(0xfffaf1,2.8);sun.position.set(-1,-2,4);scene.add(sun);
+ scene.add(new THREE.HemisphereLight(0xffffff,0x8c8c8c,2.4));const sun=new THREE.DirectionalLight(0xfffaf1,2.8);sun.position.set(-1,-2,4);scene.add(sun);
  const meshes=[],cache=new Map();for(let g=0;g<model.ngeom;g++){
   if(model.geom_group[g]===3)continue;let geometry;const type=model.geom_type[g],s=Array.from(model.geom_size.slice(g*3,g*3+3));
   if(type===7){const id=model.geom_dataid[g];if(cache.has(id))geometry=cache.get(id);else{geometry=new THREE.BufferGeometry();const a=model.mesh_vertadr[id],n=model.mesh_vertnum[id],f=model.mesh_faceadr[id],nf=model.mesh_facenum[id];// Vertex clustering reduces render-only detail; the official collision meshes are unchanged.
@@ -12,16 +12,16 @@ for(let v=0;v<n;v++){const x=verts[v*3],y=verts[v*3+1],z=verts[v*3+2],key=[x,y,z
 for(let k=0;k<counts.length;k++)for(let axis=0;axis<3;axis++)positions[k*3+axis]/=counts[k];const indices=[],seen=new Set();for(let v=0;v<faces.length;v+=3){const tri=[mapping[faces[v]],mapping[faces[v+1]],mapping[faces[v+2]]];if(new Set(tri).size<3)continue;const key=[...tri].sort((a,b)=>a-b).join(',');if(seen.has(key))continue;seen.add(key);indices.push(...tri);}geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setIndex(indices);geometry.computeVertexNormals();cache.set(id,geometry);}}
   else if(type===6)geometry=new THREE.BoxGeometry(...s.map(v=>v*2));else if(type===2)geometry=new THREE.SphereGeometry(s[0],12,8);else if(type===5){geometry=new THREE.CylinderGeometry(s[0],s[0],2*s[1],16);geometry.rotateX(Math.PI/2);}else continue;
   let rgba=Array.from(model.geom_rgba.slice(g*4,g*4+4));const mid=model.geom_matid[g];if(mid>=0)rgba=Array.from(model.mat_rgba.slice(mid*4,mid*4+4));
-  const color=new THREE.Color(...rgba.slice(0,3));if(mid>=0&&color.g>.9&&color.r<.1)color.set('#298b75');
+  const color=new THREE.Color(...rgba.slice(0,3));if(mid>=0&&color.g>.9&&color.r<.1)color.set('#333333');
   const mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color,roughness:.63,metalness:.06}));scene.add(mesh);meshes.push([g,mesh]);
  }
  // Native canvas artwork: original numbered parcel labels and workbench markings.
- function label(text,color,w=.09,h=.035){const canvas=document.createElement('canvas');canvas.width=320;canvas.height=120;const ctx=canvas.getContext('2d');ctx.fillStyle=color;ctx.fillRect(0,0,320,120);ctx.fillStyle='#fafbf4';ctx.font='600 56px monospace';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,160,61);const texture=new THREE.CanvasTexture(canvas);const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:texture,side:THREE.DoubleSide}));return m;}
- const parcelLabels=physics.objects.map((b,i)=>{const m=label('0'+(i+1),'#36443b',.034,.014);scene.add(m);return[b,m];});
+ function label(text,color,w=.09,h=.035){const canvas=document.createElement('canvas');canvas.width=320;canvas.height=120;const ctx=canvas.getContext('2d');ctx.fillStyle=color;ctx.fillRect(0,0,320,120);ctx.fillStyle='#fafafa';ctx.font='600 56px monospace';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,160,61);const texture=new THREE.CanvasTexture(canvas);const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:texture,side:THREE.DoubleSide}));return m;}
+ const parcelLabels=physics.objects.map((b,i)=>{const m=label('0'+(i+1),'#404040',.034,.014);scene.add(m);return[b,m];});
  const boxLabel=label('PACK / 03','#6b5137',.18,.043);boxLabel.position.set(.48,.094,.074);boxLabel.rotation.x=Math.PI/2;scene.add(boxLabel);
- const source=label('PICKUP','#788b74',.19,.043);source.position.set(.53,-.39,.0005);scene.add(source);
- const guide=new THREE.GridHelper(1.2,24,0xa7b4a3,0xcfd8ca);guide.rotation.x=Math.PI/2;guide.position.set(.3,0,.0002);scene.add(guide);
- const ring=new THREE.Mesh(new THREE.TorusGeometry(.036,.0015,6,40),new THREE.MeshBasicMaterial({color:0x227b60,transparent:true,opacity:.85}));scene.add(ring);
+ const source=label('PICKUP','#888888',.19,.043);source.position.set(.53,-.39,.0005);scene.add(source);
+ const guide=new THREE.GridHelper(1.2,24,0xb0b0b0,0xd6d6d6);guide.rotation.x=Math.PI/2;guide.position.set(.3,0,.0002);scene.add(guide);
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(.036,.0015,6,40),new THREE.MeshBasicMaterial({color:0x333333,transparent:true,opacity:.85}));scene.add(ring);
  const lineGeometry=new THREE.BufferGeometry();const path=new THREE.Line(lineGeometry,new THREE.LineBasicMaterial({color:0xe3775a,transparent:true,opacity:.65}));scene.add(path);
  const ghost=new THREE.Mesh(new THREE.SphereGeometry(.009,10,8),new THREE.MeshBasicMaterial({color:0xe3775a}));scene.add(ghost);ghost.visible=false;
  let points=[];function setTrail(p){dirty=true;points=p;lineGeometry.setAttribute('position',new THREE.Float32BufferAttribute(p.flat(),3));lineGeometry.computeBoundingSphere();}

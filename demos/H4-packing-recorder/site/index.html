@@ -8,7 +8,7 @@
 <section class="stage" aria-label="Robot packing workspace">
 <div id="viewport" tabindex="0" aria-label="3D physics workspace. W A S D move in the table plane, Q down, E up, Space opens or closes the gripper."></div>
 <div id="loading"><div class="loading-box"><div class="loading-icon">◌</div><strong>Preparing your workbench</strong><span id="loading-text">Loading official MuJoCo WebAssembly…</span><div class="loading-track"><i id="loading-progress"></i></div></div></div>
-<div class="workspace-badge"><span>PARCELS IN BOX</span><strong id="packed">0 <small>/ 3</small></strong><div class="parcel-dots"><i></i><i></i><i></i></div></div>
+<div class="workspace-badge"><span>Parcels in box</span><strong id="packed">0 <small>/ 3</small></strong><div class="parcel-dots"><i></i><i></i><i></i></div></div>
 <div class="stage-footer"><span><i class="target-dot"></i> Target <b id="coords">—</b></span><span>Drag to orbit · Scroll to zoom</span><button id="reset" class="text-button">↺ Reset scene</button></div>
 </section>
 <aside>
@@ -18,13 +18,13 @@
 <div class="record-stats"><span><b id="duration">0.00</b> s</span><span><b id="samples">0</b> samples</span><span>50 Hz</span></div>
 <div class="button-row"><button id="replay" disabled>▷ Replay demo</button><button id="download" disabled>↓ JSON</button></div>
 <p class="notice" id="notice" role="status">Start recording, then use the keyboard. Your first parcel is already below the gripper.</p>
-<button id="example" class="text-button example-button" disabled>Load a recorded example ↗</button>
+<button id="example" class="text-button example-button" disabled>Load a recorded example</button>
 </section>
 <section class="panel lag-panel"><div class="lag-title"><h2>Shift the camera clock</h2><span id="lag-value">0 <small>ms</small></span></div><p>Shift camera timestamps before pairing observations with actions. Train a nearest-neighbour policy on the same demo.</p>
-<label class="sr-only" for="lag">Camera lag, 0 to 200 milliseconds</label><input id="lag" type="range" min="0" max="200" step="10" value="0"><div class="range-labels"><span>0 ms · aligned</span><span>200 ms · shifted</span></div>
-<div class="alignment"><div><span>CAMERA</span><i id="camera-bar"></i></div><div><span>ACTION</span><i></i></div><b id="alignment-label">Observation & action are in sync</b></div>
-<button id="policy" class="secondary" disabled>▷ Train & run policy <span>1-NN</span></button>
-<div class="compare"><div><span>RECORDED TAKE</span><strong id="replay-score">—</strong></div><div><span>POLICY RUN</span><strong id="policy-error">—</strong></div></div>
+<label class="sr-only" for="lag">Camera lag, 0 to 200 milliseconds</label><input id="lag" type="range" min="0" max="200" step="10" value="0"><div class="range-labels"><span>0 ms</span><span>200 ms</span></div>
+<div class="alignment"><div><span>Camera</span><i id="camera-bar"></i></div><div><span>Action</span><i></i></div><b id="alignment-label">In sync</b></div>
+<button id="policy" class="secondary" disabled>▷ Train & run policy </button>
+<div class="compare"><div><span>Recorded take</span><strong id="replay-score">—</strong></div><div><span>Policy run</span><strong id="policy-error">—</strong></div></div>
 <div class="lag-note" id="lag-note">Timing errors can pair “close” with a frame that still shows an open approach.</div>
 </section>
 </aside></div>
