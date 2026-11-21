@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f5f5ed"><title>Packing Demo Recorder</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a class="brand" href="./" aria-label="Packing Demo Recorder home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="m6 13 14-7 14 7v16l-14 7-14-7zM6 13l14 7 14-7M20 20v16"/></svg><span>PACKING LAB<span class="brand-small">HUMAN → ROBOT</span></span></a><div class="header-right"><span class="live-dot"></span><span id="engine">INITIALIZING PHYSICS</span><a href="about.html">About this experiment ↗</a></div></header>
+<main>
+<div class="intro"><div><div class="eyebrow">A SMALL EXPERIMENT IN LEARNING FROM YOU</div><h1>Packing Demo Recorder<span class="title-dot">.</span></h1><p>Teach an arm to pack. Then see what a few milliseconds can change.</p></div><div class="experiment-number">EXPERIMENT <b>04</b><span>DEMONSTRATION / TIMING</span></div></div>
+<div class="workspace">
+<section class="stage" aria-label="Robot packing workspace">
+<div class="stage-top"><span class="scene-pill"><span class="live-dot"></span> <span id="mode-label">LIVE WORKSPACE</span></span><span class="stage-meta">FRANKA PANDA · 7 DOF</span></div>
+<div id="viewport" tabindex="0" aria-label="3D physics workspace. W A S D move in the table plane, Q down, E up, Space opens or closes the gripper."></div>
+<div id="loading"><div class="loading-box"><div class="loading-icon">◌</div><strong>Preparing your workbench</strong><span id="loading-text">Loading official MuJoCo WebAssembly…</span><div class="loading-track"><i id="loading-progress"></i></div></div></div>
+<div class="workspace-badge"><span>PARCELS IN BOX</span><strong id="packed">0 <small>/ 3</small></strong><div class="parcel-dots"><i></i><i></i><i></i></div></div>
+<div class="stage-footer"><span><i class="target-dot"></i> Target <b id="coords">—</b></span><span>Drag to orbit · Scroll to zoom</span><button id="reset" class="text-button">↺ Reset scene</button></div>
+</section>
+<aside>
+<section class="panel record-panel"><div class="section-caption"><span class="step-number">01</span> CAPTURE YOUR DEMONSTRATION</div><h2>Show, don’t program.</h2><p>Move over a parcel, lower the gripper, close it, then lift and release inside the box.</p>
+<div class="key-controls"><div><span class="keys"><kbd>W</kbd><span><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></span><span>Move across table</span></div><div><span class="keys horizontal"><kbd>Q</kbd><kbd>E</kbd></span><span>Lower / raise</span></div><div class="wide-key"><kbd>SPACE</kbd><span id="grip-label">Gripper open</span></div></div>
+<button id="record" class="primary" disabled><span class="record-dot"></span><span id="record-label">Start recording</span><kbd>R</kbd></button>
+<div class="record-stats"><span><b id="duration">0.00</b> s</span><span><b id="samples">0</b> samples</span><span>50 Hz</span></div>
+<div class="button-row"><button id="replay" disabled>▷ Replay demo</button><button id="download" disabled>↓ JSON</button></div>
+<p class="notice" id="notice" role="status">Start recording, then use the keyboard. Your first parcel is already below the gripper.</p>
+<button id="example" class="text-button example-button" disabled>Load a recorded example ↗</button>
+</section>
+<section class="panel lag-panel"><div class="section-caption"><span class="step-number">02</span> CHANGE THE CAMERA TIMING</div><div class="lag-title"><h2>A little late.</h2><span id="lag-value">0 <small>ms</small></span></div><p>Shift camera timestamps before pairing observations with actions. Train a nearest-neighbour policy on the same demo.</p>
+<label class="sr-only" for="lag">Camera lag, 0 to 200 milliseconds</label><input id="lag" type="range" min="0" max="200" step="10" value="0"><div class="range-labels"><span>0 ms · aligned</span><span>200 ms · shifted</span></div>
+<div class="alignment"><div><span>CAMERA</span><i id="camera-bar"></i></div><div><span>ACTION</span><i></i></div><b id="alignment-label">Observation & action are in sync</b></div>
+<button id="policy" class="secondary" disabled>▷ Train & run policy <span>1-NN</span></button>
+<div class="compare"><div><span>RECORDED TAKE</span><strong id="replay-score">—</strong></div><div><span>POLICY RUN</span><strong id="policy-error">—</strong></div></div>
+<div class="lag-note" id="lag-note">Timing errors can pair “close” with a frame that still shows an open approach.</div>
+</section>
+</aside></div>
+<section class="timeline-panel"><div class="timeline-label"><span class="eyebrow">DEMONSTRATION TAPE</span><span id="tape-state">Waiting for your first take</span></div><canvas id="timeline" aria-label="Timeline of end-effector motion, gripper events, and shifted camera timestamps"></canvas><div class="timeline-legend"><span><i class="legend-line coral"></i>End-effector height</span><span><i class="legend-line teal"></i>Gripper closes</span><span><i class="legend-line gold"></i>Shifted camera time</span><span id="physics-stats">MuJoCo WASM · real contacts & gravity</span></div></section>
+</main><footer><span>One demonstration. One arm. A question of timing.</span><span>Original interactive experiment · MuJoCo 4.0.1 / Menagerie Panda</span></footer>
+<script type="module" src="app.js"></script></body></html>

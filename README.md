@@ -2,7 +2,7 @@
 
 Demos from our robot-data experiments, November 2026: what breaks robot training data, shown on real simulator runs and open datasets.
 
-Open `demos/index.html` in a browser for the gallery (videos, numbers, caveats). To serve everything locally:
+Online: gallery https://ri-ru.github.io/robodata-demos/demos/ and robot page https://ri-ru.github.io/robodata-demos/demos/H4-packing-recorder/site/ . Or open `demos/index.html` locally. To serve everything locally:
 
 ```
 python3 -m http.server 8000
@@ -30,4 +30,5 @@ robomimic (MIT), MuJoCo and MuJoCo Menagerie (Apache 2.0), Three.js (MIT), NVIDI
 
 ## What was done
 
+- 2026-11-21: public, served by GitHub Pages at https://ri-ru.github.io/robodata-demos/demos/ ; restored the H4 page's index.html (dropped by the first copy)
 - 2026-11-21: first version: D1–D3, H4, H6 demos and the gallery page
