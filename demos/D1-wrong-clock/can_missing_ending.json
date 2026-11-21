@@ -1,0 +1,34 @@
+{
+  "task": "can",
+  "selected_reset_seed": 10001,
+  "conditions": [
+    "clean",
+    "lateobs2",
+    "end10"
+  ],
+  "outcomes": {
+    "clean": "SUCCESS",
+    "lateobs2": "SUCCESS",
+    "end10": "FAIL"
+  },
+  "fps": 20,
+  "frames": 421,
+  "duration_seconds": 21.05,
+  "resolution": [
+    1072,
+    1200
+  ],
+  "initial_state_sha256": "99040b8f5478c5a2e1e13440a51c60316b0650f9018b582e063c356fa156f4aa",
+  "mp4": "demo/can_missing_ending.mp4",
+  "mp4_bytes": 3300531,
+  "terminal_hold_seconds": 1,
+  "playback_speed": 1.0,
+  "selection_rule": "Supplemental first clean-success reset with end-cut failure; main selection unchanged.",
+  "gif": "demo/can_missing_ending.gif",
+  "gif_settings": {
+    "width": 768,
+    "fps": 10,
+    "colors": 128,
+    "bytes": 2769215
+  }
+}

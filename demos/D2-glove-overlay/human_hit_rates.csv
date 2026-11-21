@@ -1,0 +1,13 @@
+method,label,hit_frames,human_hand_frames,hit_rate
+mp_default,MediaPipe default (0.50),24,118,0.2033898305084746
+mp_low,MediaPipe confidence 0.20,39,118,0.3305084745762712
+mp_verylow,MediaPipe confidence 0.05,51,118,0.4322033898305085
+mp_clahe,MediaPipe + contrast (0.20),33,118,0.2796610169491525
+mp_center_or_full,MediaPipe full + center (0.20),45,118,0.3813559322033898
+mp_upscale2,MediaPipe 2x upscale (0.20),37,118,0.3135593220338983
+mp_tiles_or_full,MediaPipe full + 4 tiles (0.20),57,118,0.4830508474576271
+rtmdet_030,RTMDet boxes >= 0.30,28,118,0.23728813559322035
+rtmdet_010,RTMDet boxes >= 0.10,117,118,0.9915254237288136
+rtmdet_005,RTMDet boxes >= 0.05,118,118,1.0
+rtmdet_tiles_010,RTMDet full + 4 tiles (0.10),118,118,1.0
+ensemble_tiles,Tiled MediaPipe OR RTMDet,118,118,1.0

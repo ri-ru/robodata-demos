@@ -1,0 +1,17 @@
+episode,method,sum,count,hit_rate
+episode_29dfdcca300d816547e87d77ef831f57,mp_default,0,3,0.0
+episode_29dfdcca300d816547e87d77ef831f57,rtmdet_010,3,3,1.0
+episode_50caa72606e68ce0b25c2221d34f0d05,mp_default,3,24,0.125
+episode_50caa72606e68ce0b25c2221d34f0d05,rtmdet_010,23,24,0.9583333333333334
+episode_5edadb9b3d51073b94b33adc4d5e2947,mp_default,0,26,0.0
+episode_5edadb9b3d51073b94b33adc4d5e2947,rtmdet_010,26,26,1.0
+episode_a5ed9fe355ac40ba4f9f25349a5272b5,mp_default,0,3,0.0
+episode_a5ed9fe355ac40ba4f9f25349a5272b5,rtmdet_010,3,3,1.0
+episode_ac10c6f25c43092f22f4e394e6730ba3,mp_default,1,3,0.3333333333333333
+episode_ac10c6f25c43092f22f4e394e6730ba3,rtmdet_010,3,3,1.0
+episode_babf07e22806923b7efb9bdc50977e32,mp_default,15,20,0.75
+episode_babf07e22806923b7efb9bdc50977e32,rtmdet_010,20,20,1.0
+episode_ca0738de81b3a619ca2e29483ae7a98f,mp_default,2,20,0.1
+episode_ca0738de81b3a619ca2e29483ae7a98f,rtmdet_010,20,20,1.0
+episode_cc745464cbffec70b9ed9b4fcb76ff59,mp_default,3,19,0.15789473684210525
+episode_cc745464cbffec70b9ed9b4fcb76ff59,rtmdet_010,19,19,1.0

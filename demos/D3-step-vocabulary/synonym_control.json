@@ -1,0 +1,298 @@
+{
+  "method": "Frozen held-out-largest-vendor centroids; simultaneous whole-word action-verb swaps; unchanged labels excluded from primary rate",
+  "seconds": 112.9406156539917,
+  "results": [
+    {
+      "k": 50,
+      "split": "vendor_22310db8",
+      "vendor": "vendor_22310db846ad639f6ab637c3b7068fa1",
+      "unique_vendor_labels": 18801,
+      "changed_unique_labels": 15309,
+      "changed_share": 0.8142651986596458,
+      "same_cluster_share_changed": 0.7964595989287347,
+      "same_cluster_share_target_weighted_changed": 0.798785890073831,
+      "same_cluster_share_including_unchanged": 0.8342641348864422,
+      "random_pairing_expected_share": 0.1593689260066418,
+      "pair_bootstrap_ci95": [
+        0.790121823763799,
+        0.802795741067346
+      ],
+      "swaps": {
+        "hold": "grip",
+        "grab": "grasp",
+        "place": "put",
+        "put": "place",
+        "move": "shift",
+        "pull": "tug",
+        "push": "press",
+        "cut": "slice",
+        "lift": "raise",
+        "rotate": "turn",
+        "close": "shut"
+      },
+      "centroids_fitted_on_relabelled_vendor": false
+    },
+    {
+      "k": 100,
+      "split": "vendor_22310db8",
+      "vendor": "vendor_22310db846ad639f6ab637c3b7068fa1",
+      "unique_vendor_labels": 18801,
+      "changed_unique_labels": 15309,
+      "changed_share": 0.8142651986596458,
+      "same_cluster_share_changed": 0.7878372199359853,
+      "same_cluster_share_target_weighted_changed": 0.7978671041837572,
+      "same_cluster_share_including_unchanged": 0.8272432317429924,
+      "random_pairing_expected_share": 0.2317531821164398,
+      "pair_bootstrap_ci95": [
+        0.7814357567443987,
+        0.7943709582598472
+      ],
+      "swaps": {
+        "hold": "grip",
+        "grab": "grasp",
+        "place": "put",
+        "put": "place",
+        "move": "shift",
+        "pull": "tug",
+        "push": "press",
+        "cut": "slice",
+        "lift": "raise",
+        "rotate": "turn",
+        "close": "shut"
+      },
+      "centroids_fitted_on_relabelled_vendor": false
+    },
+    {
+      "k": 200,
+      "split": "vendor_22310db8",
+      "vendor": "vendor_22310db846ad639f6ab637c3b7068fa1",
+      "unique_vendor_labels": 18801,
+      "changed_unique_labels": 15309,
+      "changed_share": 0.8142651986596458,
+      "same_cluster_share_changed": 0.7822849304330786,
+      "same_cluster_share_target_weighted_changed": 0.7667924528301887,
+      "same_cluster_share_including_unchanged": 0.8227221956278922,
+      "random_pairing_expected_share": 0.12477573009141223,
+      "pair_bootstrap_ci95": [
+        0.7757495590828924,
+        0.7888823567835913
+      ],
+      "swaps": {
+        "hold": "grip",
+        "grab": "grasp",
+        "place": "put",
+        "put": "place",
+        "move": "shift",
+        "pull": "tug",
+        "push": "press",
+        "cut": "slice",
+        "lift": "raise",
+        "rotate": "turn",
+        "close": "shut"
+      },
+      "centroids_fitted_on_relabelled_vendor": false
+    },
+    {
+      "k": 500,
+      "split": "vendor_22310db8",
+      "vendor": "vendor_22310db846ad639f6ab637c3b7068fa1",
+      "unique_vendor_labels": 18801,
+      "changed_unique_labels": 15309,
+      "changed_share": 0.8142651986596458,
+      "same_cluster_share_changed": 0.6854791299235744,
+      "same_cluster_share_target_weighted_changed": 0.6307136997538967,
+      "same_cluster_share_including_unchanged": 0.7438966012446147,
+      "random_pairing_expected_share": 0.03302209423921094,
+      "pair_bootstrap_ci95": [
+        0.6780978509373571,
+        0.6931233261480175
+      ],
+      "swaps": {
+        "hold": "grip",
+        "grab": "grasp",
+        "place": "put",
+        "put": "place",
+        "move": "shift",
+        "pull": "tug",
+        "push": "press",
+        "cut": "slice",
+        "lift": "raise",
+        "rotate": "turn",
+        "close": "shut"
+      },
+      "centroids_fitted_on_relabelled_vendor": false
+    },
+    {
+      "k": 1000,
+      "split": "vendor_22310db8",
+      "vendor": "vendor_22310db846ad639f6ab637c3b7068fa1",
+      "unique_vendor_labels": 18801,
+      "changed_unique_labels": 15309,
+      "changed_share": 0.8142651986596458,
+      "same_cluster_share_changed": 0.6807106930563721,
+      "same_cluster_share_target_weighted_changed": 0.6983429040196882,
+      "same_cluster_share_including_unchanged": 0.7400138290516461,
+      "random_pairing_expected_share": 0.032490821461885866,
+      "pair_bootstrap_ci95": [
+        0.6732640930171795,
+        0.6882912012541642
+      ],
+      "swaps": {
+        "hold": "grip",
+        "grab": "grasp",
+        "place": "put",
+        "put": "place",
+        "move": "shift",
+        "pull": "tug",
+        "push": "press",
+        "cut": "slice",
+        "lift": "raise",
+        "rotate": "turn",
+        "close": "shut"
+      },
+      "centroids_fitted_on_relabelled_vendor": false
+    }
+  ],
+  "examples_k200": [
+    {
+      "original": "hold box flap with left hand press container in box with right hand",
+      "synonym": "grip box flap with left hand press container in box with right hand",
+      "original_cluster": 192,
+      "synonym_cluster": 192,
+      "same": true
+    },
+    {
+      "original": "place dried leaf in blue bucket with left hand place dried leaf in green bucket with right hand shift dried leaves in box with both hands",
+      "synonym": "put dried leaf in blue bucket with left hand put dried leaf in green bucket with right hand shift dried leaves in box with both hands",
+      "original_cluster": 20,
+      "synonym_cluster": 20,
+      "same": true
+    },
+    {
+      "original": "hold box with left hand tighten screw into box with right hand",
+      "synonym": "grip box with left hand tighten screw into box with right hand",
+      "original_cluster": 192,
+      "synonym_cluster": 192,
+      "same": true
+    },
+    {
+      "original": "open plastic bag with both hands hold plastic bag with left hand scoop soil from bucket with right hand place soil in plastic bag with right hand place plastic bag in bucket with left hand pick up plastic bag with right hand open plastic bag with both hands",
+      "synonym": "open plastic bag with both hands grip plastic bag with left hand scoop soil from bucket with right hand put soil in plastic bag with right hand put plastic bag in bucket with left hand pick up plastic bag with right hand open plastic bag with both hands",
+      "original_cluster": 166,
+      "synonym_cluster": 166,
+      "same": true
+    },
+    {
+      "original": "hold shell with left hand scrape shell with chisel in right hand",
+      "synonym": "grip shell with left hand scrape shell with chisel in right hand",
+      "original_cluster": 98,
+      "synonym_cluster": 98,
+      "same": true
+    },
+    {
+      "original": "hold shell with left hand brush shell with brush in right hand place shell on pile with right hand place brush on table with right hand",
+      "synonym": "grip shell with left hand brush shell with brush in right hand put shell on pile with right hand put brush on table with right hand",
+      "original_cluster": 170,
+      "synonym_cluster": 170,
+      "same": true
+    },
+    {
+      "original": "pick up fruit with left hand hold fruit with both hands pass fruit to left hand",
+      "synonym": "pick up fruit with left hand grip fruit with both hands pass fruit to left hand",
+      "original_cluster": 55,
+      "synonym_cluster": 55,
+      "same": true
+    },
+    {
+      "original": "hold brush with left hand place oyster on pile with left hand pick up oyster with right hand scrub oyster with brush in left hand",
+      "synonym": "grip brush with left hand put oyster on pile with left hand pick up oyster with right hand scrub oyster with brush in left hand",
+      "original_cluster": 170,
+      "synonym_cluster": 170,
+      "same": true
+    },
+    {
+      "original": "hold green onions with left hand peel leaves on green onions with right hand",
+      "synonym": "grip green onions with left hand peel leaves on green onions with right hand",
+      "original_cluster": 98,
+      "synonym_cluster": 98,
+      "same": true
+    },
+    {
+      "original": "place weeds on ground with left hand scrape weeds on ground with sickle in right hand shift weeds with left hand shift plant leaves on ground with sickle in right hand",
+      "synonym": "put weeds on ground with left hand scrape weeds on ground with sickle in right hand shift weeds with left hand shift plant leaves on ground with sickle in right hand",
+      "original_cluster": 98,
+      "synonym_cluster": 98,
+      "same": true
+    },
+    {
+      "original": "hold chalk with right hand rotate fabric with left hand",
+      "synonym": "grip chalk with right hand turn fabric with left hand",
+      "original_cluster": 120,
+      "synonym_cluster": 98,
+      "same": false
+    },
+    {
+      "original": "hold tray with left hand pick up egg with right hand",
+      "synonym": "grip tray with left hand pick up egg with right hand",
+      "original_cluster": 95,
+      "synonym_cluster": 106,
+      "same": false
+    },
+    {
+      "original": "hold chisel with left hand pick up shell and place shell on workbench with right hand",
+      "synonym": "grip chisel with left hand pick up shell and put shell on workbench with right hand",
+      "original_cluster": 178,
+      "synonym_cluster": 183,
+      "same": false
+    },
+    {
+      "original": "hold shell with left hand brush shell with brush in right hand pass shell to right hand place shell on pile with right hand",
+      "synonym": "grip shell with left hand brush shell with brush in right hand pass shell to right hand put shell on pile with right hand",
+      "original_cluster": 170,
+      "synonym_cluster": 98,
+      "same": false
+    },
+    {
+      "original": "hold oyster with right hand scrub oyster with toothbrush in left hand turn oyster with right hand scrub oyster with toothbrush in left hand",
+      "synonym": "grip oyster with right hand scrub oyster with toothbrush in left hand turn oyster with right hand scrub oyster with toothbrush in left hand",
+      "original_cluster": 139,
+      "synonym_cluster": 98,
+      "same": false
+    },
+    {
+      "original": "hold oyster with right hand scrub oyster with brush in left hand place oyster on pile with right hand pick up oyster with right hand scrub oyster with brush in left hand",
+      "synonym": "grip oyster with right hand scrub oyster with brush in left hand put oyster on pile with right hand pick up oyster with right hand scrub oyster with brush in left hand",
+      "original_cluster": 139,
+      "synonym_cluster": 98,
+      "same": false
+    },
+    {
+      "original": "hold sickle with right hand gather plants with left hand shift wooden stick on ground with left hand",
+      "synonym": "grip sickle with right hand gather plants with left hand shift wooden stick on ground with left hand",
+      "original_cluster": 165,
+      "synonym_cluster": 98,
+      "same": false
+    },
+    {
+      "original": "hold chisel with left hand reposition oyster on wooden block with right hand scrape oyster with chisel in left hand",
+      "synonym": "grip chisel with left hand reposition oyster on wooden block with right hand scrape oyster with chisel in left hand",
+      "original_cluster": 139,
+      "synonym_cluster": 183,
+      "same": false
+    },
+    {
+      "original": "hold foil with left hand press wooden block on foil with both hands",
+      "synonym": "grip foil with left hand press wooden block on foil with both hands",
+      "original_cluster": 195,
+      "synonym_cluster": 105,
+      "same": false
+    },
+    {
+      "original": "hold yellow polymer with left hand wipe yellow polymer with cloth in right hand place yellow polymer on table with left hand place cloth on table with right hand pick up yellow polymer from table with left hand wipe yellow polymer with cloth in right hand",
+      "synonym": "grip yellow polymer with left hand wipe yellow polymer with cloth in right hand put yellow polymer on table with left hand put cloth on table with right hand pick up yellow polymer from table with left hand wipe yellow polymer with cloth in right hand",
+      "original_cluster": 159,
+      "synonym_cluster": 197,
+      "same": false
+    }
+  ]
+}

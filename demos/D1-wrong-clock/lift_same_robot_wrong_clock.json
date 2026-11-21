@@ -1,0 +1,37 @@
+{
+  "task": "lift",
+  "selected_reset_seed": 10000,
+  "conditions": [
+    "clean",
+    "lateobs1",
+    "lateobs2",
+    "lateobs4"
+  ],
+  "outcomes": {
+    "clean": "SUCCESS",
+    "lateobs1": "FAIL",
+    "lateobs2": "SUCCESS",
+    "lateobs4": "FAIL"
+  },
+  "fps": 20,
+  "frames": 421,
+  "duration_seconds": 21.05,
+  "resolution": [
+    1072,
+    1200
+  ],
+  "initial_state_sha256": "25ee0abf4b9af571f5cc2a2eda921a7f17af8cd9c2c719502319bfb664766e42",
+  "mp4": "demo/lift_same_robot_wrong_clock.mp4",
+  "mp4_bytes": 2887860,
+  "terminal_hold_seconds": 1,
+  "playback_speed": 1.0,
+  "selection_rule": "Clean success, most damaged failures, then smallest reset seed",
+  "gif": "demo/lift_same_robot_wrong_clock.gif",
+  "gif_settings": {
+    "width": 768,
+    "fps": 10,
+    "colors": 128,
+    "bytes": 2596535
+  },
+  "reused_first_set_media": true
+}
