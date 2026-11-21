@@ -1,137 +1,130 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robot data demos</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>What breaks robot training data</title>
 <style>
-/* VOICE: lab datasheet, plain and exact
-   IDEA: a test report sheet; each demo is one numbered panel with its verdict
-   PICTURE: the videos themselves, large, side by side with the numbers that matter
-   COLOUR and TYPE: cobalt strip, white, black, pale blue zones; Space Grotesk + Inter
-   LAYOUT: title strip, then three bands: video first, findings beside or below */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0a0d18);--ink:light-dark(#0b0f1c,#e8ecf8);--mute:light-dark(#4a5270,#9aa3c0);--zone:light-dark(#eef2ff,#121a33);--line:light-dark(#d5ddf5,#24305a);--cobalt:#1240e0;--ok:light-dark(#0b7a3b,#5fd38f);--bad:light-dark(#b3261e,#ff8a80)}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+@font-face{font-family:"Source Serif 4";font-weight:600;font-display:swap;src:url("fonts/source-serif-4-600-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Source Serif 4";font-weight:600;font-display:swap;src:url("fonts/source-serif-4-600-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+A720-A7FF}
+@font-face{font-family:"IBM Plex Sans";font-weight:400 600;font-display:swap;src:url("fonts/ibm-plex-sans-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-weight:400 600;font-display:swap;src:url("fonts/ibm-plex-sans-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+A720-A7FF}
+:root{color-scheme:light dark;
+ --bg:light-dark(#f6f5f1,#141513);--ink:light-dark(#1d1f1c,#e9e8e3);--mute:light-dark(#5a5d56,#a4a69f);
+ --line:light-dark(#dddbd3,#2c2e2a);--accent:light-dark(#2f6b4f,#7cc3a0);--warm:light-dark(#a4562e,#e0956c)}
 *{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;font-weight:600;line-height:1.08;text-wrap:balance;margin:0}
-.strip{background:var(--cobalt);color:#fff;padding:clamp(24px,4vw,48px) max(5vw,16px)}
-.strip h1{font-size:clamp(30px,4.6vw,50px);max-width:22ch}
-.strip p{margin:.7em 0 0;max-width:68ch;color:#dfe6ff}
-.wrap{max-width:1240px;margin:0 auto}
-.band{padding:clamp(28px,4vw,56px) max(5vw,16px);border-bottom:1px solid var(--line)}
-.band:nth-child(even){background:var(--zone)}
-.head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;margin-bottom:18px}
-.head h2{font-size:clamp(24px,3vw,34px)}
-.tag{font-size:13px;font-weight:600;padding:3px 10px;border-radius:99px;border:1.5px solid currentColor}
-.tag.ok{color:var(--ok)}.tag.bad{color:var(--bad)}
-.grid{display:grid;gap:20px;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
-.vids{display:grid;gap:14px}
-.vids.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+html{background:var(--bg);color:var(--ink)}
+body{margin:0;font:17px/1.6 "IBM Plex Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+::selection{background:color-mix(in oklab,var(--accent) 30%,transparent)}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+main{max-width:1200px;margin:0 auto;padding:clamp(40px,7vw,88px) clamp(18px,4vw,40px) 56px}
+h1,h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,5vw,58px);max-width:18ch;margin-bottom:clamp(36px,6vw,72px)}
+section{padding:clamp(32px,5vw,56px) 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(25px,3vw,34px);margin-bottom:24px}
+.grid{display:grid;gap:clamp(20px,3vw,40px);grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);align-items:start}
+@media(max-width:1000px){.grid{grid-template-columns:minmax(0,1fr)}}
+.media{display:grid;gap:18px}.pair{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
 figure{margin:0}
-video,img{width:100%;display:block;border-radius:6px;background:#000;border:1px solid var(--line)}
+video,img{width:100%;display:block;border-radius:8px;background:#0d0e0d}
 img{background:#fff}
-figcaption{font-size:14px;color:var(--mute);margin-top:6px}
-.side h3{font-size:18px;margin:0 0 8px}
-.side ul{margin:0 0 16px;padding-left:1.1em}.side li{margin:.35em 0}
-table{border-collapse:collapse;width:100%;font-size:15px;margin:4px 0 16px}
-th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
-td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.bars{display:grid;gap:8px;margin:6px 0 16px}
-.bar{display:grid;grid-template-columns:9.5em minmax(0,1fr) 3.2em;gap:8px;align-items:center;font-size:14px}
-.bar i{display:block;height:14px;border-radius:3px;background:var(--cobalt)}
-.bar i.mp{background:#e07a12}
-.bar b{font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
-.note{font-size:14px;color:var(--mute)}
-.foot{padding:24px max(5vw,16px);font-size:14px;color:var(--mute)}
-@media(max-width:1100px){.grid{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:600px){table{font-size:13px}.bar{grid-template-columns:7.5em minmax(0,1fr) 3em}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+figcaption{font-size:14.5px;color:var(--mute);margin-top:8px;max-width:70ch}
+.side p,.side li{max-width:62ch}
+.side ul{margin:0;padding-left:1.1em}.side li{margin:.45em 0}
+table{border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15.5px}
+caption{text-align:left;font-weight:600;margin-bottom:6px}
+th,td{padding:7px 0;border-bottom:1px solid var(--line);text-align:left}
+th{font-weight:600;color:var(--mute);font-size:14px}
+.n{text-align:right;padding-left:16px;white-space:nowrap}
+tr.bad td.n{color:var(--warm);font-weight:600}
+.bars{display:grid;gap:9px;margin:4px 0 22px}
+.bar{display:grid;grid-template-columns:9.5em minmax(0,1fr) 3em;gap:10px;align-items:center;font-size:14.5px}
+.bar i{display:block;height:10px;border-radius:5px;background:var(--accent)}
+.bar i.mp{background:var(--warm)}
+.bar b{font-weight:600;text-align:right}
+.lesson{margin-top:18px;font-weight:600}
+@media(max-width:600px){body{font-size:16px}.bar{grid-template-columns:7.5em minmax(0,1fr) 3em}}
 </style></head><body>
-<header class="strip"><div class="wrap">
-<h1>Three demos: what breaks robot training data</h1>
-<p>Clock errors, gloved hands and free-text step labels, each shown on real runs (21 Nov 2026). Every number was checked against the raw files. Simulator and open-dataset work only; no data of ours yet.</p>
-</div></header>
-
 <main>
-<section class="band"><div class="wrap">
-<div class="head"><h2>D1 · Same robot, wrong clock</h2><span class="tag ok">Control passed</span></div>
+<h1>What breaks robot training data</h1>
+
+<section>
+<h2>Same robot, wrong clock</h2>
 <div class="grid">
-<div class="vids">
-<figure><video controls muted loop playsinline preload="metadata" src="D1-wrong-clock/can_missing_ending.mp4"></video>
-<figcaption>Can task. Bottom left: trained without the last 10 % of each demo, the robot carries the can to the bin and never lets go.</figcaption></figure>
-<figure><video controls muted loop playsinline preload="metadata" src="D1-wrong-clock/lift_same_robot_wrong_clock.mp4"></video>
-<figcaption>Lift task: clean vs observation 50, 100 and 200 ms late. Same start state for all four.</figcaption></figure>
-<figure><video controls muted loop playsinline preload="metadata" src="D1-wrong-clock/can_same_robot_wrong_clock.mp4"></video>
-<figcaption>Can task: clean, 100 ms late, last 10 % cut.</figcaption></figure>
-</div>
+<div class="media">
+<figure><video controls muted loop playsinline preload="metadata" src="D1-wrong-clock/can_missing_ending_web.mp4"></video>
+<figcaption>Can task, robomimic simulator. Bottom left: trained without the last 10 % of each demo, the robot carries the can to the bin and never lets go.</figcaption></figure>
+<div class="pair">
+<figure><video controls muted loop playsinline preload="metadata" src="D1-wrong-clock/lift_same_robot_wrong_clock_web.mp4"></video>
+<figcaption>Lift: clean, then 50, 100 and 200 ms offset. One start state for all four.</figcaption></figure>
+<figure><video controls muted loop playsinline preload="metadata" src="D1-wrong-clock/can_same_robot_wrong_clock_web.mp4"></video>
+<figcaption>Can: clean, 100 ms offset, ending cut.</figcaption></figure>
+</div></div>
 <div class="side">
-<h3>Success rate (150 rollouts each, from E1b)</h3>
-<table><thead><tr><th>Training data</th><th class="n">Lift</th><th class="n">Can</th></tr></thead><tbody>
+<table><caption>Success rate, 150 rollouts per cell</caption>
+<thead><tr><th>Training data</th><th class="n">Lift</th><th class="n">Can</th></tr></thead><tbody>
 <tr><td>Clean</td><td class="n">93.3 %</td><td class="n">94.7 %</td></tr>
 <tr><td>Observation 50 ms late</td><td class="n">72.0 %</td><td class="n">–</td></tr>
 <tr><td>100 ms late</td><td class="n">41.3 %</td><td class="n">32.0 %</td></tr>
-<tr><td>200 ms late</td><td class="n">0.7 %</td><td class="n">0.0 %</td></tr>
+<tr class="bad"><td>200 ms late</td><td class="n">0.7 %</td><td class="n">0.0 %</td></tr>
 <tr><td>Last 10 % cut</td><td class="n">94.0 %</td><td class="n">66.7 %</td></tr>
 </tbody></table>
 <ul>
-<li>Only the training data changes. The robot always sees the correct state when it runs.</li>
-<li>"Observation late" = each image is paired with an action from earlier. On a real rig, this happens when the glove or IMU stream is stamped later than it measured.</li>
-<li>Each video is one example. In the Lift clip, 100 ms happens to succeed where 50 ms fails; the rates in the table are what count.</li>
+<li>Only the training data changes; the robot always sees the true state when it runs. The clean policy succeeds 4 of 4 on both tasks in these renders.</li>
+<li>"Observation late" pairs each image with an older action. On a real rig this is a glove or IMU stream stamped on arrival instead of at capture.</li>
+<li>Each video is one rollout: in the Lift clip 100 ms happens to succeed where 50 ms fails. The table is what counts.</li>
 </ul>
-<p class="note">Control: the clean policy succeeds 4/4 per task; 28/28 renders reproduce E1b's outcomes exactly.</p>
-</div></div></div></section>
+<p class="lesson">Timestamp every reading at capture, keep streams within 10–20 ms, and keep both ends of every episode.</p>
+</div></div>
+</section>
 
-<section class="band"><div class="wrap">
-<div class="head"><h2>D2 · Gloved hands, two free detectors</h2><span class="tag ok">Control passed</span></div>
+<section>
+<h2>Gloved hands</h2>
 <div class="grid">
-<div class="vids">
-<figure><video controls muted loop playsinline preload="metadata" src="D2-glove-overlay/d2_50caa726.mp4"></video>
-<figcaption>Dark gloves at a warehouse conveyor. Left: RTMDet boxes (score ≥ 0.10). Right: MediaPipe landmarks.</figcaption></figure>
-<div class="vids two">
-<figure><video controls muted loop playsinline preload="metadata" src="D2-glove-overlay/d2_babf07e2.mp4"></video><figcaption>White gloves.</figcaption></figure>
-<figure><video controls muted loop playsinline preload="metadata" src="D2-glove-overlay/d2_ac10c6f2.mp4"></video><figcaption>Bare hands: the control.</figcaption></figure>
+<div class="media">
+<figure><video controls muted loop playsinline preload="metadata" src="D2-glove-overlay/d2_50caa726_web.mp4"></video>
+<figcaption>Dark gloves at a warehouse conveyor (NVIDIA PhysicalAI-Human-1M, CC BY 4.0). Left: RTMDet boxes at score ≥ 0.10. Right: MediaPipe landmarks.</figcaption></figure>
+<div class="pair">
+<figure><video controls muted loop playsinline preload="metadata" src="D2-glove-overlay/d2_babf07e2_web.mp4"></video><figcaption>White gloves.</figcaption></figure>
+<figure><video controls muted loop playsinline preload="metadata" src="D2-glove-overlay/d2_ac10c6f2_web.mp4"></video><figcaption>Bare hands, for comparison.</figcaption></figure>
 </div></div>
 <div class="side">
-<h3>Frames with any output (of 450)</h3>
-<table><thead><tr><th>Clip</th><th class="n">RTMDet</th><th class="n">MediaPipe</th></tr></thead><tbody>
+<table><caption>Frames with any detection, of 450</caption>
+<thead><tr><th>Clip</th><th class="n">RTMDet</th><th class="n">MediaPipe</th></tr></thead><tbody>
 <tr><td>Bare hands</td><td class="n">450</td><td class="n">443</td></tr>
 <tr><td>White gloves</td><td class="n">449</td><td class="n">280</td></tr>
-<tr><td>Dark gloves</td><td class="n">408</td><td class="n">14</td></tr>
+<tr class="bad"><td>Dark gloves</td><td class="n">408</td><td class="n">14</td></tr>
 </tbody></table>
-<h3>Hit rate on 118 frames I labelled</h3>
+<p style="font-weight:600;margin:0 0 6px">Hit rate on 118 hand-labelled frames</p>
 <div class="bars" id="bars"></div>
 <ul>
-<li>RTMDet's boxes often sit on background objects: a "hit" is not a found hand. Its false-alarm rate is still unknown.</li>
-<li>RTMDet's hand weights were trained partly on FreiHand (non-commercial): research use only for now.</li>
-<li>The 118 frames include 40 picked where the detectors disagree, so these are not rates for normal footage.</li>
+<li>RTMDet's boxes often land on background objects, so a hit is not always a hand; its false-alarm rate is not measured yet.</li>
+<li>40 of the 118 frames were picked where the detectors disagree, so these are not rates for normal footage.</li>
+<li>RTMDet's hand weights were trained partly on FreiHand, which is non-commercial: research use only.</li>
 </ul>
-</div></div></div></section>
+</div></div>
+</section>
 
-<section class="band"><div class="wrap">
-<div class="head"><h2>D3 · A fixed list of work steps</h2><span class="tag bad">Main control failed</span></div>
+<section>
+<h2>Free-text step labels</h2>
 <div class="grid">
-<figure><img src="D3-step-vocabulary/cross_vendor_vs_k.png" alt="Cross-vendor next-step accuracy against vocabulary size K, for several models and baselines">
-<figcaption>Predicting the next step for a vendor the model never saw, by vocabulary size K (41,705 free-text labels grouped into K steps).</figcaption></figure>
+<figure><img src="D3-step-vocabulary/cross_vendor_vs_k.png" alt="Next-step accuracy on an unseen vendor against vocabulary size K, for several models and baselines">
+<figcaption>Predicting the next work step for a vendor the model never saw, as 41,705 free-text labels are grouped into K steps.</figcaption></figure>
 <div class="side">
 <table><tbody>
-<tr><td>Free-text labels, other vendor</td><td class="n">0.02 %</td></tr>
+<tr class="bad"><td>Free-text labels, other vendor</td><td class="n">0.02 %</td></tr>
 <tr><td>Grouped into 200 steps</td><td class="n">37.8 %</td></tr>
 <tr><td>"Repeat the last step"</td><td class="n">54.7 %</td></tr>
 </tbody></table>
 <ul>
-<li>Grouping makes labels comparable, but repeating the last step beats the trained model. The gain comes from merging neighbouring steps, not from learning the order.</li>
-<li>Shuffling the step order barely hurts (control passed in 2 of 20 within-source settings and 0 of 20 across vendors).</li>
-<li>The largest group merges "pick up box" with "place box".</li>
+<li>Grouping makes vendors comparable, but repeating the last step beats the trained model: the gain comes from merging neighbouring steps, not from learning their order.</li>
+<li>Shuffling the step order barely hurts, and the largest group merges "pick up box" with "place box".</li>
 <li>The frequency baseline (≈ 0 %) is almost certainly a bug, so the cross-vendor numbers are not confirmed.</li>
 </ul>
-<p><b>Lesson:</b> write the step list by hand (verb + object + hand) and record when each step starts and ends.</p>
-</div></div></div></section>
+<p class="lesson">Write the step list by hand (verb, object, hand) and record when each step starts and ends.</p>
+</div></div>
+</section>
 </main>
-<footer class="foot wrap">Sources: robomimic (simulator), NVIDIA PhysicalAI-Human-1M-100K (CC BY 4.0). Videos made by agents on the Azure server; checked by Claude.</footer>
-
 <script>{
 const rows=[["MediaPipe default",24],["MediaPipe 0.05",51],["MediaPipe tiles",57],["RTMDet 0.30",28],["RTMDet 0.10",117]];
 document.getElementById('bars').innerHTML=rows.map(([l,n])=>`<div class="bar"><span>${l}</span><i class="${l.startsWith('Media')?'mp':''}" style="width:${(100*n/118).toFixed(1)}%"></i><b>${Math.round(100*n/118)}%</b></div>`).join('');
-
 }</script>
 </body></html>

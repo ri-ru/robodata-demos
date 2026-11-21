@@ -30,5 +30,6 @@ robomimic (MIT), MuJoCo and MuJoCo Menagerie (Apache 2.0), Three.js (MIT), NVIDI
 
 ## What was done
 
+- 2026-11-21: calmer design (one headline, no banner, badges, numbering or footer); videos cropped of burned-in titles (*_web.mp4); robot page header cleaned
 - 2026-11-21: public, served by GitHub Pages at https://ri-ru.github.io/robodata-demos/demos/ ; restored the H4 page's index.html (dropped by the first copy)
 - 2026-11-21: first version: D1–D3, H4, H6 demos and the gallery page
