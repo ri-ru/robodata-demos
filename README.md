@@ -30,6 +30,7 @@ robomimic (MIT), MuJoCo and MuJoCo Menagerie (Apache 2.0), Three.js (MIT), NVIDI
 
 ## What was done
 
+- 2026-11-22: D3 text corrected: the frequency baseline was not a bug (checked with a planted unit test)
 - 2026-11-21: robot page follows the house rules: one font and text size, greys only, no monospace labels or side bar
 - 2026-11-21: gallery: one font (IBM Plex Sans, self-hosted), greys only, no coloured accents or borders
 - 2026-11-21: calmer design (one headline, no banner, badges, numbering or footer); videos cropped of burned-in titles (*_web.mp4); robot page header cleaned

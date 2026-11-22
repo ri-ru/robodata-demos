@@ -109,7 +109,7 @@ th,td{padding:7px 0;border-bottom:1px solid var(--line);text-align:left;font-wei
 <ul>
 <li>Grouping makes vendors comparable, but repeating the last step beats the trained model: the gain comes from merging neighbouring steps, not from learning their order.</li>
 <li>Shuffling the step order barely hurts, and the largest group merges "pick up box" with "place box".</li>
-<li>The frequency baseline (≈ 0 %) is almost certainly a bug, so the cross-vendor numbers are not confirmed.</li>
+<li>The frequency baseline (≈ 0 %) is correct: each vendor's most common step is a different cluster. A "next step given this step" baseline reaches 37.3 %, the same as the trained model.</li>
 </ul>
 <p>Write the step list by hand (verb, object, hand) and record when each step starts and ends.</p>
 </div></div>
